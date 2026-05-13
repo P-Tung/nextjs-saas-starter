@@ -1,0 +1,32 @@
+# Files to protect from template updates
+# These files will remain untouched in the user's project
+
+# Branding and Identity
+src/config/site.ts
+src/config/landing.ts
+src/config/pricing.ts
+src/config/legal.ts
+src/config/navigation.ts
+src/config/blog.ts
+src/config/features.ts
+src/config/collections.ts
+src/config/email.ts
+
+# Environment and Credentials
+.env
+.env.local
+.firebaserc
+firebase.json
+firestore.rules
+firestore.indexes.json
+
+# Assets
+public/icon.svg
+public/logo.png
+public/og-image.png
+
+# Git and Documentation
+.github/workflows/sync-template.yml
+README.md
+AGENTS.md
+TODO.md

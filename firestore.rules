@@ -1,0 +1,25 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /posts/{postId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    match /users/{userId} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+      allow write: if false; // Only Admin SDK (server-side) can write
+    }
+
+    match /waitlist/{emailDoc} {
+      allow read: if false; // Only server-side can read
+      allow create: if request.resource.data.keys().hasAll(['email', 'createdAt', 'source'])
+                    && request.resource.data.email is string
+                    && request.resource.data.email.matches('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')
+                    && request.resource.data.createdAt is timestamp
+                    && request.resource.data.source in ['hero', 'cta'];
+      allow update, delete: if false; // Only server-side can modify
+    }
+  }
+}

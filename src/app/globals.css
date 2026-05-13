@@ -1,0 +1,184 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: corporate --default, dark;
+}
+
+@plugin "daisyui/theme" {
+  name: "corporate";
+  default: true;
+  prefersdark: false;
+  color-scheme: "light";
+
+  --color-base-100: #f9f9f9;
+  --color-base-200: #eeeeee;
+  --color-base-300: #d9d9d9;
+  --color-base-content: #1a1c1c;
+
+  --color-primary: #ffd600;
+  --color-primary-content: #1a1c1c;
+
+  --color-secondary: #dc3135;
+  --color-secondary-content: #ffffff;
+
+  --color-accent: #1a1c1c;
+  --color-accent-content: #f9f9f9;
+
+  --color-neutral: #1a1c1c;
+  --color-neutral-content: #f9f9f9;
+
+  --color-info: #0f62fe;
+  --color-info-content: #ffffff;
+  --color-success: #008a3d;
+  --color-success-content: #ffffff;
+  --color-warning: #ffd600;
+  --color-warning-content: #1a1c1c;
+  --color-error: #ba1a1a;
+  --color-error-content: #ffffff;
+
+  --radius-selector: 0;
+  --radius-field: 0;
+  --radius-box: 0;
+}
+
+@plugin "daisyui/theme" {
+  name: "dark";
+  default: false;
+  prefersdark: true;
+  color-scheme: "dark";
+
+  --color-base-100: #1a1c1c;
+  --color-base-200: #2f3131;
+  --color-base-300: #474747;
+  --color-base-content: #f9f9f9;
+
+  --color-primary: #ffd600;
+  --color-primary-content: #1a1c1c;
+
+  --color-secondary: #ff4d4f;
+  --color-secondary-content: #1a1c1c;
+
+  --color-accent: #f9f9f9;
+  --color-accent-content: #1a1c1c;
+
+  --radius-selector: 0;
+  --radius-field: 0;
+  --radius-box: 0;
+}
+
+:root {
+  --brutal-ink: #1a1c1c;
+  --brutal-paper: #f9f9f9;
+  --brutal-muted: #eeeeee;
+  --brutal-line: #1a1c1c;
+  --brutal-primary: #ffd600;
+  --brutal-red: #dc3135;
+  --brutal-text-muted: #4d4632;
+  --brutal-shadow: 4px 4px 0 0 var(--brutal-ink);
+  --font-display: var(--font-sans);
+
+  font-family: var(--font-sans), sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  min-height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  background: var(--brutal-paper);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brutal-ink);
+  border-radius: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brutal-red);
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display), sans-serif;
+  }
+
+  .font-mono-label {
+    font-family: var(--font-mono), monospace;
+  }
+
+  .brutal-shadow {
+    box-shadow: var(--brutal-shadow);
+  }
+
+  .brutal-shadow-hover {
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  }
+
+  .brutal-shadow-hover:hover {
+    box-shadow: 0 0 0 0 var(--brutal-ink);
+    transform: translate(4px, 4px);
+  }
+
+  .brutal-card {
+    border: 4px solid var(--brutal-line);
+    background: var(--brutal-paper);
+    box-shadow: var(--brutal-shadow);
+    border-radius: 0;
+  }
+
+  .brutal-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 44px;
+    border: 4px solid var(--brutal-line);
+    background: var(--brutal-paper);
+    color: var(--brutal-ink);
+    box-shadow: var(--brutal-shadow);
+    border-radius: 0;
+    font-family: var(--font-display), sans-serif;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0;
+    transition: transform 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+  }
+
+  .brutal-button:hover,
+  .brutal-button:focus-visible {
+    box-shadow: 0 0 0 0 var(--brutal-ink);
+    transform: translate(4px, 4px);
+  }
+
+  .brutal-button-primary {
+    background: var(--brutal-primary);
+  }
+
+  .brutal-button-dark {
+    background: var(--brutal-ink);
+    color: var(--brutal-paper);
+  }
+
+  .technical-grid {
+    background-image:
+      linear-gradient(to right, rgb(26 28 28 / 10%) 2px, transparent 2px),
+      linear-gradient(to bottom, rgb(26 28 28 / 10%) 2px, transparent 2px);
+    background-size: 64px 64px;
+  }
+
+  .text-gradient {
+    color: var(--brutal-ink);
+  }
+}

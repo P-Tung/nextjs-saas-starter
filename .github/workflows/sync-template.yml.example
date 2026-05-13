@@ -1,0 +1,25 @@
+name: Sync Template
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # Runs daily at midnight
+  workflow_dispatch: # Allows manual triggering
+
+jobs:
+  sync-template:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout target repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.SYNC_TOKEN }} # PAT with workflow scope
+          fetch-depth: 0
+
+      - name: Sync with template
+        uses: AndreasAugustin/actions-template-sync@v2
+        with:
+          source_repo_path: P-Tung/nextjs-saas-starter
+          upstream_branch: main
+          pr_labels: template-sync
+          pr_title: "chore: update from template"
+          is_force_push_pr: false
